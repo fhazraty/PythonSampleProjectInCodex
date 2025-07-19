@@ -25,13 +25,13 @@ def add_task(description):
     tasks = load_tasks()
     tasks.append({'description': description, 'completed': False})
     save_tasks(tasks)
-    print('وظیفه اضافه شد.')
+    print('task done')
 
 
 def view_tasks():
     tasks = load_tasks()
     if not tasks:
-        print('هیچ وظیفه‌ای وجود ندارد.')
+        print('no task exists!')
         return
     for i, task in enumerate(tasks, 1):
         status = '✓' if task.get('completed') else '✗'
@@ -52,14 +52,14 @@ def main():
     while True:
         command = input('> ').strip()
         if command == 'exit':
-            print('خروج...')
+            print('exit...')
             break
         elif command.startswith('add '):
             desc = command[4:].strip()
             if desc:
                 add_task(desc)
             else:
-                print('توضیح وظیفه را وارد کنید.')
+                print('add desciption to task : ')
         elif command == 'view':
             view_tasks()
         elif command.startswith('complete '):
